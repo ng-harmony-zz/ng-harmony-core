@@ -26,7 +26,7 @@ This serves as literate-programming compiler-directive
 ```javascript
 import "ng-harmony-log";
 import { Logging, Mixin } from "ng-harmony-decorator";
-import * from "ng-harmony-util";
+import "ng-harmony-util";
 ```
 
 _Harmony_ is the ng-base-class for all other endeavours.
