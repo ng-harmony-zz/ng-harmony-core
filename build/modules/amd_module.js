@@ -1,31 +1,31 @@
+var _dec, _dec2, _class;
+
 import "ng-harmony-log";
 import { Logging, Mixin } from "ng-harmony-decorator";
 import "ng-harmony-util";
 
-@Logging()
-@Mixin(TimeUtil, NumberUtil, AsyncUtil, TypeCheckUtil)
-export class Harmony {
-	constructor (...args) {
-        this.constructor.$inject.forEach((injectee, i) => {
+export let Harmony = (_dec = Logging(), _dec2 = Mixin(TimeUtil, NumberUtil, AsyncUtil, TypeCheckUtil), _dec(_class = _dec2(_class = class Harmony {
+	constructor(...args) {
+		this.constructor.$inject.forEach((injectee, i) => {
 			this[injectee] = args[i];
 		});
 		this._constructed = this._timestamp;
 	}
-	get name () {
-		return `${this.constructor.name}::${this._constructed}::${this._random}`;
+	get name() {
+		return `${ this.constructor.name }::${ this._constructed }::${ this._random }`;
 	}
-	get _name () {
+	get _name() {
 		let _name = this.name.split("::");
 		return {
 			fn: _name[0],
 			ts: _name[1],
 			id: _name[2]
-		}
+		};
 	}
-	static get $inject () {
+	static get $inject() {
 		return this._$inject || [];
 	}
-	static set $inject (injectees) {
+	static set $inject(injectees) {
 		let _injectees = [];
 		if (!Array.isArray(injectees)) {
 			injectees = [injectees];
@@ -38,7 +38,7 @@ export class Harmony {
 				}
 			}
 			if (truthy) {
-				if(injecteeStr.charAt(0) !== "-") {
+				if (injecteeStr.charAt(0) !== "-") {
 					_injectees.push(injecteeStr);
 				} else {
 					let j = this.$inject.indexOf(injecteeStr.slice(1));
@@ -50,12 +50,14 @@ export class Harmony {
 		}
 		this._$inject = this.$inject.concat(_injectees);
 	}
-	static set $register (descriptor) {
+	static set $register(descriptor) {
 		Object.keys(descriptor).forEach((module, i) => {
 			angular.module(module)[descriptor[module].type](descriptor[module].name, this);
 		});
 	}
-	toString () {
+	toString() {
 		return this.name || super.toString().match(/function\s*(.*?)\(/)[1];
 	}
-}
+}) || _class) || _class);
+
+//# sourceMappingURL=amd_module.js.map
