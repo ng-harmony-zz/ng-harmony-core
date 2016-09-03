@@ -144,7 +144,7 @@ export class Service extends Harmony {
 
 ## CHANGELOG
 
-*0.1.1* Reintroducing Ctrl plus Service in core ... just out of reason
+*0.1.2* Reintroducing Ctrl plus Service in core ... just out of reason
 *0.1.0* Base Class, now with default logger
 
 ## MIGRATION CHANGELOG ng-harmony
