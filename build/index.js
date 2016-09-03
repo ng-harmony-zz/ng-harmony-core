@@ -22,6 +22,7 @@ export class Harmony {
 			id: _name[2]
 		}
 	}
+
 	static get $inject () {
 		return this._$inject || [];
 	}
@@ -57,5 +58,37 @@ export class Harmony {
 	}
 	toString () {
 		return this.name || super.toString().match(/function\s*(.*?)\(/)[1];
+	}
+}
+
+export class Controller extends Harmony {
+    static set $register(descriptor) {
+        Object.getOwnPropertyNames(descriptor).forEach((module) => {
+            angular.module(module).controller(descriptor[module].name, this);
+        });
+    }
+	constructor (...args) {
+		super(...args);
+		let proto = this.constructor.prototype; Object.getOwnPropertyNames(this.constructor).forEach((fn, i) => {
+			if (typeof proto[key] === "function" &&
+				key[0] === "$") {
+				this.$scope[key.slice(1)] = this.$scope[key] = (..._args) => {
+					return fn.apply(this, _args);
+				};
+			}
+		});
+	}
+	_digest () {
+		try { this.$scope.$digest(); }
+		catch (ngEx) {}
+	}
+}
+Controller.$inject = "$scope";
+
+export class Service extends Harmony {
+	static set $register(descriptor) {
+		Object.keys(descriptor).forEach((module) => {
+			angular.module(module)[descriptor[module].type || "service"](descriptor[module].name, this);
+		});
 	}
 }

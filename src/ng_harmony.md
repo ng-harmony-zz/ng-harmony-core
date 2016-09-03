@@ -12,8 +12,8 @@ These is the bazz-klasses for writing nice ES-Next Angular ~2 ... you'll import 
 A base-class collection for OO programming in ES6 with angular.
 Use it in conjunction with
 
-* [literate-programming](http://npmjs.org/packages/literate-programming "click for npm-package-homepage") to write markdown-flavored literate JS, HTML and CSS
-* [jspm](https://www.npmjs.com/package/jspm "click for npm-package-homepage") for a nice solution to handle npm-modules with ES6-Module-Format-Loading ...
+	* [literate-programming](http://npmjs.org/packages/literate-programming "click for npm-package-homepage") to write markdown-flavored literate JS, HTML and CSS
+	* [jspm](https://www.npmjs.com/package/jspm "click for npm-package-homepage") for a nice solution to handle npm-modules with ES6-Module-Format-Loading ...
 
 ## Files
 
@@ -53,7 +53,9 @@ export class Harmony {
 		}
 	}
 ```
+
 Getter and Setter for the static $inject variable
+
 ```javascript
 	static get $inject () {
 		return this._$inject || [];
@@ -100,8 +102,49 @@ A nice toString foo that should in theory pretty nicely return the Classe's name
 }
 ```
 
+The Controller Base-Class is a starting point for all ng-controllers.
+
+```javascript
+export class Controller extends Harmony {
+    static set $register(descriptor) {
+        Object.getOwnPropertyNames(descriptor).forEach((module) => {
+            angular.module(module).controller(descriptor[module].name, this);
+        });
+    }
+	constructor (...args) {
+		super(...args);
+		let proto = this.constructor.prototype; Object.getOwnPropertyNames(this.constructor).forEach((fn, i) => {
+			if (typeof proto[key] === "function" &&
+				key[0] === "$") {
+				this.$scope[key.slice(1)] = this.$scope[key] = (..._args) => {
+					return fn.apply(this, _args);
+				};
+			}
+		});
+	}
+	_digest () {
+		try { this.$scope.$digest(); }
+		catch (ngEx) {}
+	}
+}
+Controller.$inject = "$scope";
+```
+
+The _Service_ Class is a tiny base for Services that don't extend the more sophisticated DataServices
+
+```javascript
+export class Service extends Harmony {
+	static set $register(descriptor) {
+		Object.keys(descriptor).forEach((module) => {
+			angular.module(module)[descriptor[module].type || "service"](descriptor[module].name, this);
+		});
+	}
+}
+```
+
 ## CHANGELOG
 
+*0.1.1* Reintroducing Ctrl plus Service in core ... just out of reason
 *0.1.0* Base Class, now with default logger
 
 ## MIGRATION CHANGELOG ng-harmony
