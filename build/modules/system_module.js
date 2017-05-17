@@ -1,10 +1,10 @@
 var _dec, _dec2, _class;
 
-import "ng-harmony-log";
+import { Log } from "ng-harmony-log";
 import { Logging, Mixin } from "ng-harmony-decorator";
-import "ng-harmony-util";
+import * as _ from "ng-harmony-util";
 
-export let Harmony = (_dec = Logging(), _dec2 = Mixin(TimeUtil, NumberUtil, AsyncUtil, TypeCheckUtil), _dec(_class = _dec2(_class = class Harmony {
+export let Harmony = (_dec = Logging(), _dec2 = Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil), _dec(_class = _dec2(_class = class Harmony {
 	constructor(...args) {
 		this.constructor.$inject.forEach((injectee, i) => {
 			this[injectee] = args[i];
@@ -12,7 +12,7 @@ export let Harmony = (_dec = Logging(), _dec2 = Mixin(TimeUtil, NumberUtil, Asyn
 		this._constructed = this._timestamp;
 	}
 	get name() {
-		return `${ this.constructor.name }::${ this._constructed }::${ this._random }`;
+		return `${this.constructor.name}::${this._constructed}::${this._random}`;
 	}
 	get _name() {
 		let _name = this.name.split("::");

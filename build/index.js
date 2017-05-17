@@ -1,9 +1,9 @@
-import "ng-harmony-log";
+import { Log } from "ng-harmony-log";
 import { Logging, Mixin } from "ng-harmony-decorator";
-import "ng-harmony-util";
+import * as _ from "ng-harmony-util";
 
 @Logging()
-@Mixin(TimeUtil, NumberUtil, AsyncUtil, TypeCheckUtil)
+@Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil)
 export class Harmony {
 	constructor (...args) {
         this.constructor.$inject.forEach((injectee, i) => {

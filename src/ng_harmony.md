@@ -24,16 +24,16 @@ This serves as literate-programming compiler-directive
 ## Compilation
 
 ```javascript
-import "ng-harmony-log";
+import { Log } from "ng-harmony-log";
 import { Logging, Mixin } from "ng-harmony-decorator";
-import "ng-harmony-util";
+import * as _ from "ng-harmony-util";
 ```
 
 _Harmony_ is the ng-base-class for all other endeavours.
 
 ```javascript
 @Logging()
-@Mixin(TimeUtil, NumberUtil, AsyncUtil, TypeCheckUtil)
+@Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil)
 export class Harmony {
 	constructor (...args) {
         this.constructor.$inject.forEach((injectee, i) => {
@@ -143,7 +143,7 @@ export class Service extends Harmony {
 ```
 
 ## CHANGELOG
-
+*0.1.3* Debug Publish Bump
 *0.1.2* Reintroducing Ctrl plus Service in core ... just out of reason
 *0.1.0* Base Class, now with default logger
 
