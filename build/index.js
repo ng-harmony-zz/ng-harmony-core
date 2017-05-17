@@ -69,11 +69,12 @@ export class Controller extends Harmony {
     }
 	constructor (...args) {
 		super(...args);
-		let proto = this.constructor.prototype; Object.getOwnPropertyNames(this.constructor).forEach((fn, i) => {
+		let proto = this.constructor.prototype;
+		Object.getOwnPropertyNames(this.constructor).forEach((key, i) => {
 			if (typeof proto[key] === "function" &&
 				key[0] === "$") {
 				this.$scope[key.slice(1)] = this.$scope[key] = (..._args) => {
-					return fn.apply(this, _args);
+					return proto[key].apply(this, _args);
 				};
 			}
 		});
