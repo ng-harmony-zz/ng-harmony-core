@@ -73,7 +73,7 @@ export class Controller extends Harmony {
 		let proto = this.constructor.prototype;
 		if (this.constructor.CTRL_AS) this.$scope[this.constructor.CTRL_AS] = {};
 		
-		Object.getOwnPropertyNames(this.constructor).forEach((key, i) => {
+		Object.getOwnPropertyNames(proto).forEach((key, i) => {
 			if (typeof proto[key] === "function" &&
 				key[0] === "$") {
 				if (this.constructor.CTRL_AS) {
