@@ -144,6 +144,9 @@ The _Service_ Class is a tiny base for Services that don't extend the more sophi
 
 ```javascript
 export class Service extends Harmony {
+	constructor (...args) {
+		super(...args);
+	}
 	static set $register(descriptor) {
 		Object.keys(descriptor).forEach((module) => {
 			angular.module(module)[descriptor[module].type || "service"](descriptor[module].name, this);

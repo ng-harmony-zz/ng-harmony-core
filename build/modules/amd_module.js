@@ -96,6 +96,9 @@ export let Controller = class Controller extends Harmony {
 Controller.$inject = "$scope";
 
 export let Service = class Service extends Harmony {
+	constructor(...args) {
+		super(...args);
+	}
 	static set $register(descriptor) {
 		Object.keys(descriptor).forEach(module => {
 			angular.module(module)[descriptor[module].type || "service"](descriptor[module].name, this);
