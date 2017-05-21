@@ -35,7 +35,7 @@ _Harmony_ is the ng-base-class for all other endeavours.
 @Logging()
 @Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil)
 export class Harmony {
-	constructor (args) {
+	constructor (...args) {
         this.constructor.$inject.forEach((injectee, i) => {
 			this[injectee] = args[i];
 		});
