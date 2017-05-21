@@ -69,13 +69,22 @@ export class Controller extends Harmony {
     }
 	constructor (...args) {
 		super(...args);
+		
 		let proto = this.constructor.prototype;
+		if (this.constructor.CTRL_AS) this.$scope[this.constructor.CTRL_AS] = {};
+		
 		Object.getOwnPropertyNames(this.constructor).forEach((key, i) => {
 			if (typeof proto[key] === "function" &&
 				key[0] === "$") {
-				this.$scope[key.slice(1)] = this.$scope[key] = (..._args) => {
-					return proto[key].apply(this, _args);
-				};
+				if (this.constructor.CTRL_AS) {
+					this.$scope[this.constructor.CTRL_AS][key.slice(1)] = (..._args) => {
+						return proto[key].apply(this, _args);
+					};
+				} else {
+					this.$scope[key] = (..._args) => {
+						return proto[key].apply(this, _args);
+					}	
+				}
 			}
 		});
 	}
