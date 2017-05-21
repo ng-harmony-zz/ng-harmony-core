@@ -5,7 +5,7 @@ import { Logging, Mixin } from "ng-harmony-decorator";
 import * as _ from "ng-harmony-util";
 
 export let Harmony = (_dec = Logging(), _dec2 = Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil), _dec(_class = _dec2(_class = class Harmony {
-	constructor(...args) {
+	constructor(args) {
 		this.constructor.$inject.forEach((injectee, i) => {
 			this[injectee] = args[i];
 		});
