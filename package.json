@@ -1,7 +1,7 @@
 {
   "name": "ng-harmony-core",
   "description": "Core Functionality to Class Based NG1",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://github.com/ng-harmony/ng-harmony-core",
   "author": {
     "name": "joehannes",
@@ -34,7 +34,11 @@
     "transpile_umd": "babel --modules umd -e 1 -s -o ./build/modules/umd_module.js ./build/index.js",
     "modules": "npm run transpile_amd && npm run transpile_common && npm run transpile_system && npm run transpile_umd"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ng-harmony-decorator": "^0.3.26",
+    "ng-harmony-log": "^0.1.8",
+    "ng-harmony-util": "^0.1.2"
+  },
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-plugin-transform-class-properties": "^6.11.5",
@@ -48,9 +52,9 @@
   "keywords": [],
   "jspm": {
     "dependencies": {
-      "ng-harmony/ng-harmony-decorator": "github:ng-harmony/ng-harmony-decorator@^0.3.6",
-      "ng-harmony/ng-harmony-log": "github:ng-harmony/ng-harmony-log@^0.1.5",
-      "ng-harmony/ng-harmony-util": "github:ng-harmony/ng-harmony-util@^0.1.0"
+      "ng-harmony/ng-harmony-decorator": "github:ng-harmony/ng-harmony-decorator@^0.3.26",
+      "ng-harmony/ng-harmony-log": "github:ng-harmony/ng-harmony-log@^0.1.8",
+      "ng-harmony/ng-harmony-util": "github:ng-harmony/ng-harmony-util@^0.1.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
