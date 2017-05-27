@@ -1,10 +1,9 @@
-var _dec, _dec2, _class;
+var _dec, _class;
 
-import { Log } from "ng-harmony-log";
-import { Logging, Mixin } from "ng-harmony-decorator";
+import { Mixin } from "ng-harmony-decorator";
 import * as _ from "ng-harmony-util";
 
-export let Harmony = (_dec = Logging(), _dec2 = Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil), _dec(_class = _dec2(_class = class Harmony {
+export let Harmony = (_dec = Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil), _dec(_class = class Harmony {
 	constructor(...args) {
 		this.constructor.$inject.forEach((injectee, i) => {
 			this[injectee] = args[i];
@@ -59,7 +58,7 @@ export let Harmony = (_dec = Logging(), _dec2 = Mixin(_.TimeUtil, _.NumberUtil, 
 	toString() {
 		return this.name || super.toString().match(/function\s*(.*?)\(/)[1];
 	}
-}) || _class) || _class);
+}) || _class);
 
 export let Controller = class Controller extends Harmony {
 	static set $register(descriptor) {

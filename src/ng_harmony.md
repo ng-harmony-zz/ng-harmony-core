@@ -24,15 +24,13 @@ This serves as literate-programming compiler-directive
 ## Compilation
 
 ```javascript
-import { Log } from "ng-harmony-log";
-import { Logging, Mixin } from "ng-harmony-decorator";
+import { Mixin } from "ng-harmony-decorator";
 import * as _ from "ng-harmony-util";
 ```
 
 _Harmony_ is the ng-base-class for all other endeavours.
 
 ```javascript
-@Logging()
 @Mixin(_.TimeUtil, _.NumberUtil, _.AsyncUtil, _.TypeCheckUtil)
 export class Harmony {
 	constructor (...args) {

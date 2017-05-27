@@ -1,7 +1,7 @@
 {
   "name": "ng-harmony-core",
   "description": "Core Functionality to Class Based NG1",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "homepage": "https://github.com/ng-harmony/ng-harmony-core",
   "author": {
     "name": "joehannes",
@@ -35,8 +35,8 @@
     "modules": "npm run transpile_amd && npm run transpile_common && npm run transpile_system && npm run transpile_umd"
   },
   "dependencies": {
-    "ng-harmony-decorator": "^0.3.26",
-    "ng-harmony-log": "^0.1.8",
+    "ng-harmony-decorator": "^0.3.27",
+    "ng-harmony-log": "^0.2.0",
     "ng-harmony-util": "^0.1.2"
   },
   "devDependencies": {
