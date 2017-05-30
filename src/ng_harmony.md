@@ -154,6 +154,7 @@ export class Service extends Harmony {
 ```
 
 ## CHANGELOG
+*0.2.0* New README --- considered usable/semi-stable
 *0.1.3* Debug Publish Bump
 *0.1.2* Reintroducing Ctrl plus Service in core ... just out of reason
 *0.1.0* Base Class, now with default logger

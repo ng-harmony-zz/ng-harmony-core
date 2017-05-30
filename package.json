@@ -1,7 +1,7 @@
 {
   "name": "ng-harmony-core",
   "description": "Core Functionality to Class Based NG1",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "homepage": "https://github.com/ng-harmony/ng-harmony-core",
   "author": {
     "name": "joehannes",
@@ -52,8 +52,8 @@
   "keywords": [],
   "jspm": {
     "dependencies": {
-      "ng-harmony/ng-harmony-decorator": "github:ng-harmony/ng-harmony-decorator@^0.3.26",
-      "ng-harmony/ng-harmony-log": "github:ng-harmony/ng-harmony-log@^0.1.8",
+      "ng-harmony/ng-harmony-decorator": "github:ng-harmony/ng-harmony-decorator@^0.3.27",
+      "ng-harmony/ng-harmony-log": "github:ng-harmony/ng-harmony-log@^0.2.0",
       "ng-harmony/ng-harmony-util": "github:ng-harmony/ng-harmony-util@^0.1.2"
     },
     "devDependencies": {
